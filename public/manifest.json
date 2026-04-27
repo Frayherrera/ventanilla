@@ -2,7 +2,7 @@
     "name": "MobileApp",
     "short_name": "MobileApp",
     "description": "",
-    "start_url": "http://app.local",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#ebeaea",
     "theme_color": "#f9fafb",
