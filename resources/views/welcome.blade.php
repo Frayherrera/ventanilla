@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Alcaldía Municipal de Río Viejo, Bolívar - Ventanilla Única Digital</title>
+    <meta name="theme-color" content="#4A90E2">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <link rel="manifest" href="/manifest.json">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,6 +30,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -58,6 +65,7 @@
         }
     </style>
 </head>
+
 <body class="min-h-screen bg-white">
 
     <!-- Header -->
@@ -85,8 +93,7 @@
     <section id="inicio" class="relative h-[600px] overflow-hidden">
         <div class="absolute inset-0">
             <img src="https://images.unsplash.com/photo-1700769670643-14361ffa6dfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxDb2xvbWJpYW4lMjB0b3duJTIwZ292ZXJubWVudCUyMGJ1aWxkaW5nJTIwYXJjaGl0ZWN0dXJlfGVufDF8fHx8MTc3NTg1Njk4OXww&ixlib=rb-4.1.0&q=80&w=1080"
-                 alt="Alcaldía Municipal de Río Viejo"
-                 class="w-full h-full object-cover">
+                alt="Alcaldía Municipal de Río Viejo" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-r from-blue-900/95 to-blue-800/85"></div>
         </div>
 
@@ -99,11 +106,11 @@
 
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href=""
-                       class="bg-red-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors shadow-lg text-center">
+                        class="bg-red-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-red-700 transition-colors shadow-lg text-center">
                         Iniciar Trámite
                     </a>
                     <a href=""
-                       class="bg-white text-blue-900 px-8 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors shadow-lg text-center">
+                        class="bg-white text-blue-900 px-8 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors shadow-lg text-center">
                         Consultar Estado
                     </a>
                 </div>
@@ -117,10 +124,8 @@
             <div class="max-w-2xl mx-auto">
                 <form action="" method="GET" class="relative">
                     <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-blue-400"></i>
-                    <input type="text"
-                           name="q"
-                           placeholder="Buscar trámite o servicio..."
-                           class="w-full pl-12 pr-4 py-4 rounded-lg border-2 border-blue-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                    <input type="text" name="q" placeholder="Buscar trámite o servicio..."
+                        class="w-full pl-12 pr-4 py-4 rounded-lg border-2 border-blue-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
                 </form>
             </div>
         </div>
@@ -146,16 +151,19 @@
 
                 @foreach($servicios as $index => $servicio)
                     <div class="group cursor-pointer hover-scale animate-fade-in-up-delay-{{ $index }}"
-                         style="animation-delay: {{ $index * 0.1 }}s">
-                        <div class="bg-white p-6 rounded-xl border-2 border-blue-200 hover:border-red-500 hover:shadow-lg transition-all">
-                            <div class="{{ $servicio['color'] }} w-14 h-14 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        style="animation-delay: {{ $index * 0.1 }}s">
+                        <div
+                            class="bg-white p-6 rounded-xl border-2 border-blue-200 hover:border-red-500 hover:shadow-lg transition-all">
+                            <div
+                                class="{{ $servicio['color'] }} w-14 h-14 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                 <i class="fas {{ $servicio['icon'] }} w-7 h-7 {{ $servicio['iconColor'] }} text-2xl"></i>
                             </div>
                             <h3 class="font-semibold text-blue-900 mb-2">{{ $servicio['titulo'] }}</h3>
                             <p class="text-sm text-blue-700 mb-4">{{ $servicio['descripcion'] }}</p>
                             <div class="flex items-center text-red-600 text-sm font-medium">
                                 Acceder
-                                <i class="fas fa-chevron-right w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
+                                <i
+                                    class="fas fa-chevron-right w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"></i>
                             </div>
                         </div>
                     </div>
@@ -188,12 +196,13 @@
 
                         @foreach($tramites as $index => $tramite)
                             <div class="bg-white p-4 rounded-lg border-2 border-blue-200 hover:border-red-500 hover:shadow-md transition-all cursor-pointer flex items-center justify-between group"
-                                 style="animation: fadeInUp 0.4s ease-out {{ $index * 0.05 }}s forwards; opacity: 0;">
+                                style="animation: fadeInUp 0.4s ease-out {{ $index * 0.05 }}s forwards; opacity: 0;">
                                 <div class="flex items-center gap-3">
                                     <i class="fas fa-file-alt text-blue-700"></i>
                                     <span class="font-medium text-blue-900">{{ $tramite }}</span>
                                 </div>
-                                <i class="fas fa-chevron-right text-red-500 group-hover:translate-x-1 transition-transform"></i>
+                                <i
+                                    class="fas fa-chevron-right text-red-500 group-hover:translate-x-1 transition-transform"></i>
                             </div>
                         @endforeach
                     </div>
@@ -316,6 +325,7 @@
             </div>
         </div>
     </footer>
-
+   @vite(['resources/js/app.js'])
 </body>
+
 </html>
